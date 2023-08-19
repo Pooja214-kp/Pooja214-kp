@@ -179,6 +179,10 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
     print('min val mae for {} is {}'.format(EXP_NAME, min_mae))
 
 if __name__=='__main__':
+    w_ft = 0.5  # Add these lines
+    ft_st = 0.2
+    topk = 5
+    w_ftp = 0.8
     cfg = dataset.Config(datapath=f'C:/Users/poojak/Documents/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
     batch_size = cfg.batch
    # w_ft, ft_st, topk,w_ftp = cfg
