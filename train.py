@@ -88,6 +88,18 @@ root = '../CodDataset'
 def train(Dataset, Network, cfg, train_loss, start_from = 0):
     ## dataset
     data = Dataset.Data(cfg)
+    print("datapath  : ", cfg.datapath)
+    print("savepath  : ", cfg.savepath)
+    print("mode      : ", cfg.mode)
+    print("batch     : ", cfg.batch)
+    print("lr        : ", cfg.lr)
+    print("momen     : ", cfg.momen)
+    print("decay     : ", cfg.decay)
+    print("epoch     : ", cfg.epoch)
+    print("label_dir : ", cfg.label_dir)
+    
+    # ... and so on for other attributes
+
     loader = DataLoader(data, batch_size=cfg.batch, shuffle=True, num_workers=8)
     val_cfg = [Dataset.Config(datapath=f'{root}/test/{i}' , mode='test') for i in ['CHAMELEON', 'CAMO', 'COD10K']]
     val_data = [Dataset.Data(v) for v in val_cfg]
