@@ -73,7 +73,7 @@ class Data(Dataset):
     def __init__(self, cfg):
         self.cfg = cfg
         self.data_name = cfg.datapath.split('/')[-1]
-        with open(cfg.datapath+'/'+cfg.mode+'.txt', 'r') as lines:
+        with open(cfg.datapath+'C:/Users/poojak/Documents/Pooja214-kp/CodDataset'+cfg.mode+'.txt', 'r') as lines:
             self.samples = []
             if cfg.mode == 'train':
               for line in lines:
