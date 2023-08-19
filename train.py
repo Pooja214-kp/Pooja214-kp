@@ -179,6 +179,20 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
     print('min val mae for {} is {}'.format(EXP_NAME, min_mae))
 
 if __name__=='__main__':
+    w_ft = 0.5  # These values are already defined here
+    ft_st = 0.2
+    topk = 5
+    w_ftp = 0.8
+    cfg = dataset.Config(datapath=f'C:/Users/poojak/Documents/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    batch_size = cfg.batch
+    EXP_NAME = f'trained'
+    cfg = dataset.Config(datapath=f'C:/Users/poojak/Documents/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    from net import Net
+    tm = partial(train_loss, w_ft=w_ft, ft_st=ft_st, ft_fct=.5, ft_dct=dict(crtl_loss=False, w_ftp=w_ftp, norm=False, topk=topk, step_ratio=2), ft_head=False, mtrsf_prob=1, ops=[0,1,2], w_l2g=0.3, l_me=0.05, me_st=20, multi_sc=0)
+    train(dataset, Net, cfg, tm, start_from=0)
+
+
+'''if __name__=='__main__':
     w_ft = 0.5  # Add these lines
     ft_st = 0.2
     topk = 5
@@ -190,4 +204,4 @@ if __name__=='__main__':
     cfg = dataset.Config(datapath=f'C:/Users/poojak/Documents/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir = 'Scribble')
     from net import Net
     tm = partial(train_loss, w_ft=w_ft, ft_st = ft_st, ft_fct=.5, ft_dct = dict(crtl_loss = False, w_ftp=w_ftp, norm=False, topk=topk, step_ratio=2), ft_head=False, mtrsf_prob=1, ops=[0,1,2], w_l2g=0.3, l_me=0.05, me_st=20, multi_sc=0)
-    train(dataset, Net, cfg, tm, start_from=0)
+    train(dataset, Net, cfg, tm, start_from=0)'''
