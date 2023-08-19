@@ -180,7 +180,8 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
 
 if __name__=='__main__':
     cfg = dataset.Config(datapath=f'C:/Users/poojak/Documents/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
-    w_ft, ft_st, topk,w_ftp = cfg
+    batch_size = cfg.batch
+   # w_ft, ft_st, topk,w_ftp = cfg
     EXP_NAME = f'trained'
     cfg = dataset.Config(datapath=f'{root}', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir = 'Scribble')
     from net import Net
