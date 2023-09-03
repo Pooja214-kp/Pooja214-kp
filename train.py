@@ -101,7 +101,7 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
     # ... and so on for other attributes
 
     loader = DataLoader(data, batch_size=cfg.batch, shuffle=True, num_workers=0)
-    val_cfg = [Dataset.Config(datapath=f'{root}/test/{i}' , mode='test') for i in ['CHAMELEON', 'CAMO', 'COD10K']]
+    val_cfg = [Dataset.Config(datapath=f'{root}\test\{i}' , mode='test') for i in ['CHAMELEON', 'CAMO', 'COD10K']]
     val_data = [Dataset.Data(v) for v in val_cfg]
     val_loaders = [DataLoader(v, batch_size=1, shuffle=False, num_workers=4) for v in val_data] 
     min_mae = 1.0
@@ -171,11 +171,11 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
                 min_mae = mae
                 best_epoch = epoch + 1
                 if epoch > cfg.epoch//2:
-                    torch.save(net.state_dict(), cfg.savepath + '/model-best.pth')
+                    torch.save(net.state_dict(), cfg.savepath + '\model-best.pth')
                 print('best epoch is:%d, MAE:%s' % (best_epoch, min_mae))
             
         if epoch == cfg.epoch-2 or epoch == cfg.epoch-1 or (epoch+1) % 30 == 0:
-            torch.save(net.state_dict(), cfg.savepath + '/model-' + str(epoch + 1))
+            torch.save(net.state_dict(), cfg.savepath + '\model-' + str(epoch + 1))
     print('min val mae for {} is {}'.format(EXP_NAME, min_mae))
 
 if __name__=='__main__':
@@ -183,10 +183,10 @@ if __name__=='__main__':
     ft_st = 0.2
     topk = 5
     w_ftp = 0.8
-    cfg = dataset.Config(datapath=f'C:/Users/91809/Documents/camo/Pooja214-kp/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    cfg = dataset.Config(datapath=f'C:\Users\91809\Documents\camo\Pooja214-kp\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
     batch_size = cfg.batch
     EXP_NAME = f'trained'
-    cfg = dataset.Config(datapath=f'C:/Users/91809/Documents/camo/Pooja214-kp/CodDataset', savepath=f'./out/{EXP_NAME}/', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    cfg = dataset.Config(datapath=f'C:\Users\91809\Documents\camo\Pooja214-kp\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
    
     from net import Net
     tm = partial(train_loss, w_ft=w_ft, ft_st=ft_st, ft_fct=.5, ft_dct=dict(crtl_loss=False, w_ftp=w_ftp, norm=False, topk=topk, step_ratio=2), ft_head=False, mtrsf_prob=1, ops=[0,1,2], w_l2g=0.3, l_me=0.05, me_st=20, multi_sc=0)

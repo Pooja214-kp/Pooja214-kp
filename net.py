@@ -196,7 +196,7 @@ class ResNet(nn.Module):
         return out1, out2, out3, out4, out5
 
     def initialize(self):
-        self.load_state_dict(torch.load('C:/Users/91809/Documents/camo/Pooja214-kp/assets/resnet50-19c8e357.pth'), strict=False)
+        self.load_state_dict(torch.load('C:\Users\91809\Documents\camo\Pooja214-kp\assets\resnet50-19c8e357.pth'), strict=False)
 
 
 ############################################# Pooling ##############################################

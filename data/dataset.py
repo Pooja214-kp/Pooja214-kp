@@ -73,18 +73,18 @@ class Data(Dataset):
     def __init__(self, cfg):
         self.cfg = cfg
         self.data_name = cfg.datapath.split('/')[-1]
-        with open(os.path.join(cfg.datapath, 'C:/Users/91809/Documents/camo/Pooja214-kp/CodDataset', cfg.mode + '.txt'), 'r') as lines:
+        with open(os.path.join(cfg.datapath, 'C:\Users\91809\Documents\camo\Pooja214-kp\CodDataset', cfg.mode + '.txt'), 'r') as lines:
         #with open(cfg.datapath+'C:/Users/poojak/Documents/Pooja214-kp/CodDataset'+cfg.mode+'.txt', 'r') as lines:
             self.samples = []
             if cfg.mode == 'train':
               for line in lines:
-                  imagepath = cfg.datapath +'/'+cfg.mode+ '/Image/' + line.strip() + '.jpg'
-                  maskpath  = cfg.datapath + '/'+cfg.mode+f'/{cfg.label_dir}/'  + line.strip() + '.png'
+                  imagepath = cfg.datapath +'\'+cfg.mode+ '\Image\' + line.strip() + '.jpg'
+                  maskpath  = cfg.datapath + '\'+cfg.mode+f'\{cfg.label_dir}\'  + line.strip() + '.png'
                   self.samples.append([imagepath, maskpath])
             else:
               for line in lines:
-                  imagepath = cfg.datapath + '/Image/' + line.strip() + '.jpg'
-                  maskpath  = cfg.datapath +'/GT/'  + line.strip() + '.png'
+                  imagepath = cfg.datapath + '\Image\' + line.strip() + '.jpg'
+                  maskpath  = cfg.datapath +'\GT\'  + line.strip() + '.png'
                   self.samples.append([imagepath, maskpath])
 
         if cfg.mode == 'train':
@@ -126,7 +126,7 @@ if __name__=='__main__':
     import matplotlib.pyplot as plt
     plt.ion()
 
-    cfg  = Config(mode='test', datapath='/dataC/qhd/cod/CodDataset')
+    cfg  = Config(mode='test', datapath='\dataC\qhd\cod\CodDataset')
     data = Data(cfg)
     loader = DataLoader(data, batch_size=1, shuffle=True, num_workers=8)
     prefetcher = DataPrefetcher(loader)
