@@ -111,10 +111,10 @@ class Data(Dataset):
         mask = cv2.imread(maskpath)
 
         if image is None:
-        print(f"Failed to load image: {imagepath}")
+            print(f"Failed to load image: {imagepath}")
 
         if mask is None:
-        print(f"Failed to load mask: {maskpath}")
+            print(f"Failed to load mask: {maskpath}")
 
         if image is None or mask is None:
         # Handle the case where image or mask loading failed
