@@ -84,7 +84,7 @@ class Data(Dataset):
                   self.samples.append([imagepath, maskpath])
             else:
               for line in lines:
-                  imagepath = cfg.datapath + '\\Image\\' + line.strip() + '.jpg'
+                  imagepath = cfg.datapath + '\\Imgs\\' + line.strip() + '.jpg'
                   maskpath  = cfg.datapath +'\\GT\\'  + line.strip() + '.png'
                   self.samples.append([imagepath, maskpath])
 
