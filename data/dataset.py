@@ -14,10 +14,6 @@ except:
 from torch.utils.data import Dataset, DataLoader
 from lib.data_prefetcher import DataPrefetcher
 
-# Define image dimensions
-H = 256  # Height of the images in pixels
-W = 256  # Width of the images in pixels
-C = 3    # Number of color channels (e.g., 3 for RGB images)
 
 class Config(object):
     def __init__(self, **kwargs):
@@ -83,7 +79,7 @@ class Data(Dataset):
             self.samples = []
             if cfg.mode == 'train':
               for line in lines:
-                  imagepath = cfg.datapath +'\\'+cfg.mode+ '\\Image\\' + line.strip() + '.jpg'
+                  imagepath = cfg.datapath +'\\'+cfg.mode+ '\\Imgs\\' + line.strip() + '.jpg'
                   maskpath  = cfg.datapath + '\\'+cfg.mode+f'\\{cfg.label_dir}\\'  + line.strip() + '.png'
                   self.samples.append([imagepath, maskpath])
             else:
