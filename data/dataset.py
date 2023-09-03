@@ -119,7 +119,7 @@ class Data(Dataset):
         if image is None or mask is None:
         # Handle the case where image or mask loading failed
         # You can choose to skip this sample or handle the error as needed
-        return None, None, None, None
+            return None, None, None, None
         
         imagepath, maskpath = self.samples[idx]
         image               = cv2.imread(imagepath).astype(np.float32)[:,:,::-1]
