@@ -183,10 +183,10 @@ if __name__=='__main__':
     ft_st = 0.2
     topk = 5
     w_ftp = 0.8
-    cfg = dataset.Config(datapath=f'C:\Users\91809\Documents\camo\Pooja214-kp\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    cfg = dataset.Config(datapath=f'C:\\Users\\91809\\Documents\\camo\\Pooja214-kp\\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
     batch_size = cfg.batch
     EXP_NAME = f'trained'
-    cfg = dataset.Config(datapath=f'C:\Users\91809\Documents\camo\Pooja214-kp\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
+    cfg = dataset.Config(datapath=f'C:\\Users\\91809\\Documents\\camo\\Pooja214-kp\\CodDataset', savepath=f'.\out\{EXP_NAME}\', mode='train', batch=16, lr=1e-3, momen=0.9, decay=5e-4, epoch=total_epoch, label_dir='Scribble')
    
     from net import Net
     tm = partial(train_loss, w_ft=w_ft, ft_st=ft_st, ft_fct=.5, ft_dct=dict(crtl_loss=False, w_ftp=w_ftp, norm=False, topk=topk, step_ratio=2), ft_head=False, mtrsf_prob=1, ops=[0,1,2], w_l2g=0.3, l_me=0.05, me_st=20, multi_sc=0)
