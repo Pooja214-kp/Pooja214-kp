@@ -100,7 +100,7 @@ def train(Dataset, Network, cfg, train_loss, start_from = 0):
     
     # ... and so on for other attributes
 
-    loader = DataLoader(data, batch_size=cfg.batch, shuffle=True, num_workers=8)
+    loader = DataLoader(data, batch_size=cfg.batch, shuffle=True, num_workers=0)
     val_cfg = [Dataset.Config(datapath=f'{root}/test/{i}' , mode='test') for i in ['CHAMELEON', 'CAMO', 'COD10K']]
     val_data = [Dataset.Data(v) for v in val_cfg]
     val_loaders = [DataLoader(v, batch_size=1, shuffle=False, num_workers=4) for v in val_data] 
