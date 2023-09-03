@@ -118,12 +118,7 @@ class Data(Dataset):
         if mask is None:
             print(f"Failed to load mask: {maskpath}")
 
-        if image is None or mask is None:
-        # Handle the case where image or mask loading failed
-        # Replace the failed sample with placeholder data
-            image = np.zeros((H, W, C), dtype=np.float32)
-            mask = np.zeros((H, W, C), dtype=np.float32)
-
+        
         
         imagepath, maskpath = self.samples[idx]
         image               = cv2.imread(imagepath).astype(np.float32)[:,:,::-1]
