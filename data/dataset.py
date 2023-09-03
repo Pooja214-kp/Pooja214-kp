@@ -106,6 +106,21 @@ class Data(Dataset):
         maskpath = os.path.join(self.samples[idx][1])
         print("Image Path:", imagepath)
         print("Mask Path:", maskpath)
+        # Attempt to load the image and mask
+        image = cv2.imread(imagepath)
+        mask = cv2.imread(maskpath)
+
+        if image is None:
+        print(f"Failed to load image: {imagepath}")
+
+        if mask is None:
+        print(f"Failed to load mask: {maskpath}")
+
+        if image is None or mask is None:
+        # Handle the case where image or mask loading failed
+        # You can choose to skip this sample or handle the error as needed
+        return None, None, None, None
+        
         imagepath, maskpath = self.samples[idx]
         image               = cv2.imread(imagepath).astype(np.float32)[:,:,::-1]
         mask                = cv2.imread(maskpath).astype(np.float32)[:,:,::-1]
