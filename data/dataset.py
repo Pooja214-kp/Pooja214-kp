@@ -14,6 +14,11 @@ except:
 from torch.utils.data import Dataset, DataLoader
 from lib.data_prefetcher import DataPrefetcher
 
+# Define image dimensions
+H = 256  # Height of the images in pixels
+W = 256  # Width of the images in pixels
+C = 3    # Number of color channels (e.g., 3 for RGB images)
+
 class Config(object):
     def __init__(self, **kwargs):
         if kwargs.get('label_dir') is None:
@@ -100,11 +105,7 @@ class Data(Dataset):
                                                 )
         else:
             raise ValueError
-    # Define image dimensions
-    H = 256  # Height of the images in pixels
-    W = 256  # Width of the images in pixels
-    C = 3    # Number of color channels (e.g., 3 for RGB images)
-
+    
 
     def __getitem__(self, idx):
         imagepath = os.path.join(self.samples[idx][0])
