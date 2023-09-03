@@ -102,6 +102,8 @@ class Data(Dataset):
             raise ValueError
 
     def __getitem__(self, idx):
+        imagepath = os.path.join(self.samples[idx][0])
+        maskpath = os.path.join(self.samples[idx][1])
         imagepath, maskpath = self.samples[idx]
         image               = cv2.imread(imagepath).astype(np.float32)[:,:,::-1]
         mask                = cv2.imread(maskpath).astype(np.float32)[:,:,::-1]
